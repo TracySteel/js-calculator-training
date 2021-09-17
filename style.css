@@ -1,0 +1,68 @@
+
+
+.center{
+    text-align: center;
+}
+
+.space{
+    display:block;
+    margin:10px 0;
+}
+
+#answerbox{
+    display:none;
+    padding-top: 20px;
+}
+
+#billAnswer{
+    display:none;
+    padding-top: 20px;
+}
+
+#splitAnswer{
+    display:none;
+    padding-top: 20px;
+}
+
+#inchesAnswer{
+    display:none;
+    padding-top: 20px;
+}
+
+.alert-wider {
+    width: 100%;
+    display: block;
+}
+
+#animalsAnswer {
+    display:none;
+    padding-top: 20px;
+}
+
+#retireAnswer {
+   display:none;
+   padding-top: 20px; 
+
+}
+
+#deathAnswer {
+   display:none;
+   padding-top: 20px; 
+
+}
+
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  padding: 10px;
+}
+
+
+
+
+
+
