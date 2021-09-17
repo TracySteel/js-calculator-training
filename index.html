@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!--    <link rel="title icon" type="image/png" href="./images/title-img.png">-->
+    <!-- jquery -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/9b9c4a97d8.js" crossorigin="anonymous"></script>
+    <!-- Custom -->
+    <link rel="stylesheet" href="style.css" />
+    <script src='script.js'></script>
+        
+    <title>Freakin' Calculators Yo</title>
+  </head>
+  <body>
+
+    <!--  navbar -->
+     <nav class="navbar navbar-expand-md navbar-light bg-dark fixed-top ">
+
+         <a href="#" class="navbar-brand"><i class="fas fa-calculator text-warning fa-2x"></i></a>
+         <button type="button" class="navbar-toggler bg-light" data-toggle="collapse" data-target="#nav"><span class="navbar-toggler-icon"></span></button>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            
+             <ul class="navbar-nav ">
+                 <li class="nav-item"><a class="nav-link text-light text-uppercase font-weight-bold px-3" href="#">Home</a></li>
+                 <li class="nav-item"><a class="nav-link text-light text-uppercase font-weight-bold px-3" href="#splitBills">Split Bills</a></li>
+                 <li class="nav-item"><a class="nav-link text-light text-uppercase font-weight-bold px-3" href="#metric">Make it Metric</a></li>
+                 <li class="nav-item"></li><a class="nav-link text-light text-uppercase font-weight-bold px-3" href="#addUp">Add Stuff Up</a></li>
+                 <li class="nav-item"><a class="nav-link text-light text-uppercase font-weight-bold px-3" href="#retirement">Calculate Retirement</a></li>
+                 <li class="nav-item"><a class="nav-link text-light text-uppercase font-weight-bold px-3" href="#death">Calculate your death <i class="fas fa-skull text-light fa-1x"></i></a></li>
+             </ul>
+         </div>
+     </nav>
+    <!-- end of navbar -->
+
+    <!-- banner -->
+
+    <section>
+        <div class="container-fluid">
+            <div class="row bg-info justify-content-center align-items-center" style="height: 100vh">
+                <div class="col-sm-10 text-center">
+                    <h1 class="display-2 text-capitalize"><span class="text-warning">tracy's awesome freakin' <span class="text-white font-weight-bold">calculators</span></span></h1>
+                    <h2 class="font-weight-light font-italic text-light">A bunch of calculators to calculate random stuff.</h2>
+                    <a href="#splitBills" class="btn btn-warning btn-lg px-4 m-3">Split bills now!</a>
+                    <a href="#retirement" class="btn btn-danger btn-lg px-4 m-3">How many years until I Retire?</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end of banner -->
+
+    <!-- split bills -->
+     <a id="splitBills"></a>
+    <section class="bg-light p-5">
+        <div class="container-fluid">
+
+            <!-- title -->
+           
+            <div class="row">
+                <div class="col text-center mb-3">
+                    
+                   <h1 class="text-warning display-2">Split Bills</h1>
+                    <p class="lead text-secondary">Y'all wanna calculate tips and split the bill with friends? Calculate that stuff here:</p>
+                </div>
+            </div>
+            <!-- end title -->
+            
+            <!-- calculate tip input -->
+            <div class="row text-center">
+                <div class="col-lg-4 col-sm-10 mx-auto mb-5">
+                    <i class="fas fa-percentage fa-6x text-warning mb-3"></i>
+                    <h1 class="text-secondary">Calculate Tip</h1>
+                    <p class="text-muted my-4">Enter bill amount:</p>
+                    
+                    <input id="billAmount" class="form-control space" type="text" placeholder="Enter Bill Amount"/><br/>
+                    
+                <button class="btn btn-outline-warning" onclick="grabAndStart()" >Calculate Tip</button>
+              
+                
+                <!-- calculate tip answer -->
+                <div class="row" id="answerbox">
+                 <div class="col-lg-4 col-sm-10 mx-auto mb-5">
+                    <div class="alert alert-info" role="alert">
+                        <h3 id="tipAmount"></h3>
+                     </div>
+                    </div>
+                </div>
+              </div>
+            <!-- end tip -->
+               
+               <!-- calculate total bill -->
+                <div class="col-lg-4 col-sm-10 mx-auto mb-5">
+                    <i class="fas fa-pound-sign fa-6x text-warning mb-3"></i>
+                    <h1 class="text-secondary">Total Bill</h1>
+                    <p class="text-muted my-4">Thanks for the tip, what's the total bill though?</p>
+                <button id="totalBill" class="btn btn-outline-warning" onclick="totalBill()">Get my total bill amount!</button>
+               
+                
+             <!-- calculate total bill answer -->
+                <div class="row" id="billAnswer">
+                 <div class="col-lg-4 col-sm-10 mx-auto mb-5">
+                    <div class="alert alert-info" role="alert">
+                        <h3 id="totalAmount"></h3>
+                     </div>
+                    </div>
+                </div>
+              </div>   
+             <!-- end total bill -->
+               
+            <!-- calculate split -->
+                <div class="col-lg-4 col-sm-10 mx-auto mb-5">
+                    <i class="fas fa-restroom fa-6x text-warning mb-3"></i>
+                    <h1 class="text-secondary">Yo Split it</h1>
+                    <p class="text-muted my-4">Enter the number of people to split the bill with:</p>
+                    <input id="numPeople" class="form-control space" type="text" placeholder="Enter number of people"/><br/>
+                <button class="btn btn-outline-warning" onclick="getSplit()">How much is it each?</button>
+                
+                   <!-- calculate split answer -->
+                <div class="row" id="splitAnswer">
+                 <div class="col-lg-4 col-sm-10 mx-auto mb-5">
+                    <div class="alert alert-info" role="alert">
+                        <h3 id="splitBillAmount"></h3>
+                     </div>
+                    </div>
+                </div>
+                </div>
+           <!-- end split answer -->      
+                
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- end split bills -->
+
+
+    <!-- inches -->
+
+    <a id="metric"></a>
+    <section class="p-sm-5 p-2 bg-secondary">
+
+     <div class="container-fluid">
+    
+     <!-- title -->
+    
+     <div class="row">
+            <div class="col text-center mb-3">
+                <h1 class="text-warning display-2">Inches to Centimeters</h1>
+                <p class="lead text-white">Imperialist stuff, no way! Get yo metric on!</p>
+            </div>
+        </div>
+        
+    <!-- end title -->
+       
+        <div class="row">
+                   <div class="col-lg-3">
+                    
+                </div>
+            
+                <div class="col-lg-3">
+                    <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-white">Enter the number of inches to metricise:</h3>
+                            </div>
+                            <div class="card-subtitle">
+                                <p class="lead-text-secondary">Enter inches then click button.</p>
+                                <input id="numInches" class="form-control space" type="text" placeholder="Enter number of inches" /><br />
+                                <button class="btn btn-outline-light" onclick="getInches()">Make it metric!</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                        
+                <div class="col-lg-3">
+                    <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-white">This is the number of Centimeters:</h3>
+                            </div>
+                            <div class="card-subtitle">
+                                <p class="lead-text-secondary">Yo, metric stuff here.</p>
+                                <!-- calculate inches answer -->
+
+                                <div class="row" id="inchesAnswer">
+                                    <div class="col-lg-6 mx-auto">
+                                        <div class="alert alert-light" role="alert">
+                                            <h3 class="text-info" id="numCentimeters"></h3>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- end inches answer -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+                     <div class="col-lg-3">
+                    
+                </div>
+                
+                </div>
+        
+        </div>
+
+
+    </section>
+    
+<!-- end inches -->
+   
+   
+<!-- Add cats and dogs -->
+   
+<a id="addUp"></a> 
+    <section>
+        <div class="container-fluid">
+            <div class="row bg-info justify-content-center align-items-center" style="height: 40vh">
+                <div class="col-sm-10 text-center">
+                    <h1 class="display-2 text-capitalize"><span class="text-warning">Wait, does this <span class="text-white font-weight-bold">add up</span>?</span></h1>
+                    <h2 class="font-weight-light font-italic text-light">It's raining cats and dogs!</h2>
+                </div>
+            </div>
+            
+   <!-- number cats -->
+          
+         <div class="row bg-info">
+             <div class="col-lg-4 col-sm-10 mx-auto mb-5">
+
+                 <h1 class="text-danger"><i class="	fas fa-cat fa-3x text-warning mb-3"></i>Meow!</h1>
+                 <input id="numCats" class="form-control space" type="text" placeholder="Enter number of cats" /><br />
+             </div>
+                   
+ <!-- number dogs -->
+                <div class="col-lg-4 col-sm-10 mx-auto mb-5">
+
+                    <h1 class="text-danger"><i class="	fas fa-dog fa-3x text-warning mb-3"></i>Woof!</h1>
+                    <input id="numDogs" class="form-control space" type="text" placeholder="Enter number of dogs" /><br />
+                </div>
+
+                </div>
+                
+        <div class="row bg-info">
+            <div class="col-lg-4 col-sm-10 mx-auto mb-5 text-center">
+
+                <button class="btn btn-outline-danger btn-lg" onclick="getAnimals()">So tell me, how many cats and dogs are there?</button>
+
+            </div>
+        </div>
+                      
+   <!-- totalAnimals -->
+
+                       <div class="row bg-info" id="animalsAnswer">
+
+                           <div class="col-lg-12 col-sm-10 mx-auto mb-5 text-center" >
+
+                               <div role="alert">
+                                   <h3 class="text-danger display-2" id="totalAnimals"></h3><br />
+                               </div>
+                           </div>
+                       </div>
+
+                       </div>
+
+         </section>
+
+      <!-- End add cats and dogs -->
+   
+   
+   
+    <!-- retirement -->
+    
+     <a id="retirement"></a>
+     
+    <section class="bg-light p-5">
+       
+        <div class="container-fluid">
+   
+           <!-- title -->
+           
+            <div class="row">
+                <div class="col text-center mb-4">
+                    
+                   <h1 class="text-info display-1">Calculate Your Retirement</h1>
+                    <h2 class="font-weight-light font-italic text-warning">How long until yo ass can split from the corporates</h2><br />
+                    <i class="fas fa-blind fa-5x text-info mb-3"></i>
+                </div>
+            </div>
+            
+            <!-- end title -->
+            
+            <!-- calculate retirement -->
+            <div class="row">
+           
+                <div class="col-lg-12 col-sm-10 mx-auto mb-2 text-center">
+
+                    <h1 class="text-muted display-4">What's your year of birth?</h1><br />
+
+                </div>
+
+             </div>
+                    
+                           
+        <div class="row bg-white">
+           
+            <div class="col-lg-6 col-sm-10 mx-auto mb-1 text-center">
+
+              <input id="birthYear" class="form-control space" type="text" placeholder="Enter your birth year (don't be shy)" /><br />
+
+            </div>
+        </div>
+                
+                <div class="col-lg-12 text-center">
+                
+               <button class="btn btn-outline-warning btn-lg" onclick="getBirthYear()">When can I retire?</button>
+                    </div>
+                    
+             <!-- retirement answer -->
+                <div class="row" id="retireAnswer">
+                 <div class="col-lg-4 col-sm-10 mx-auto mb-5 text-center">
+                    <div class="alert alert-info" role="alert">
+                        <h3 id="ageRetirement"></h3>
+                     </div>
+                    </div>
+                </div>
+              </div>   
+             <!-- end retirement answer -->
+
+             
+            
+             <div class="row">
+               
+                <div class="col-lg-12 mb-5">
+                
+               
+
+                </div>
+
+            </div>
+            
+        
+    </section>
+      
+    <!-- end retirement -->
+    
+    
+     <!-- death -->
+    
+     <a id="death"></a>
+     
+    <section class="bg-dark p-5">
+       
+        <div class="container-fluid">
+   
+           <!-- title -->
+           
+            <div class="row">
+                <div class="col-lg-3 text-center mb-3">
+
+                    <h1 class="text-light display-1 "><i class="fas fa-skull-crossbones fa-2x text-light mb-3"></i></h1>
+
+                </div>
+                <div class="col-lg-6 text-center aligh-self-end mb-3 ">
+
+                    <h1 class="text-light display-1 ">The End Is Nigh!</h1>
+                    <h2 class="font-weight-light font-italic text-danger">how long have you got 'til you pop yer clogs?</h2>
+                      <h1 class="text-muted display-5">Answer these most gruesome and simple of questions...</h1>
+                </div>
+                <div class="col-lg-3 text-center mb-3">
+
+                    <h1 class="text-light display-1 "> <i class="fas fa-skull-crossbones fa-2x text-light mb-3"></i></h1>
+                </div>
+            </div>
+                <div class="row">
+                    <div class="col-12 text-center mb-5">
+                        
+                    </div>
+                </div>
+            
+            <!-- end title -->
+            
+            <!-- calculate Death -->
+             <div class="row justify-content-center">
+
+                <div class="col-lg-4 mx-auto mb-2">
+
+                <form>
+                        <label class="text-light">Are you a woman?</label>
+                        <select class="form-control" id="woman">
+                           <option>Select...</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                    
+                 </div>
+                   
+                    <div class="col-lg-4 mx-auto mb-2">
+                    
+              
+                        <label class="text-light">Do you ever eat salad?</label>
+                        <select class="form-control" id="salad">
+                           <option>Select...</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                  
+                    </div>
+                    
+                </div>
+            
+            
+            
+            <div class="row justify-content-center">
+
+                <div class="col-lg-4 mx-auto mb-2">
+
+                <form>
+                        <label class="text-light">Have you got Covid-19?</label>
+                        <select class="form-control" id="covid">
+                           <option>Select...</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                    
+                 </div>
+                   
+                    <div class="col-lg-4 mx-auto mb-2">
+                    
+              
+                        <label class="text-light">Do you smoke crack or cigarettes?</label>
+                        <select class="form-control" id="smoke">
+                           <option>Select...</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                  
+                    </div>
+                    
+                </div>
+            
+             <div class="row justify-content-center">
+
+                <div class="col-lg-4 mx-auto mb-2">
+
+                    
+                        <label class="text-light">Do you watch Eastenders?</label>
+                        <select class="form-control" id="soap">
+                           <option>Select...</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                  
+                 </div>
+                    
+                    <div class="col-lg-4 mx-auto mb-2">
+
+                      
+                            <label class="text-light">Do you day drink?</label>
+                            <select class="form-control" id="drink">
+                                <option>Select...</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                     
+                    </div>
+                 </div> 
+                    
+                   <div class="row justify-content-center">
+
+                <div class="col-lg-4 mx-auto mb-2">
+
+                   
+                        <label class="text-light">Do you exercise sometimes?</label>
+                        <select class="form-control" id="exercise">
+                           <option>Select...</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                  
+                 </div>
+                    
+                    <div class="col-lg-4 mx-auto mb-5">
+
+                        
+                            <label class="text-light">Do you have children?</label>
+                            <select class="form-control" id="children">
+                                <option>Select...</option>
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        
+                    </div>
+                    </div>      
+                    
+                    
+            </form> 
+
+                <div class="row justify-content-center">
+                    <div class="col-12 text-center">
+
+                        <button class="btn btn-outline-danger btn-lg" onclick="getDeath()"><i class="fas fa-skull text-light fa-1x"></i> When will I die? (for bants)</button>
+                    </div>
+                </div>
+                   
+                
+             <!-- death answer -->
+                <div class="row" id="deathAnswer">
+                 <div class="col-lg-4 col-sm-10 mx-auto mb-5 text-center">
+                    <div class="alert alert-danger" role="alert">
+                        <h3 id="yearsToDeath"></h3>
+                     </div>
+                    </div>
+                </div>
+             <!-- end death answer -->
+
+             
+            
+             <div class="row">
+               
+                <div class="col-lg-12 mb-5">
+                
+               
+
+                </div>
+
+            </div>
+            
+            </div>
+    </section>
+      
+    <!-- end death -->
+    
+    
+   
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+-->
+  </body>
+</html>
